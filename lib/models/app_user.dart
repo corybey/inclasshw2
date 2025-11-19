@@ -4,47 +4,52 @@ class AppUser {
   final String uid;
   final String firstName;
   final String lastName;
+  final String displayName;
   final String email;
-  final String role;
-  final DateTime registeredAt;
-  final DateTime? dob;
 
   AppUser({
     required this.uid,
     required this.firstName,
     required this.lastName,
+    required this.displayName,
     required this.email,
-    required this.role,
-    required this.registeredAt,
-    this.dob,
   });
 
-  String get displayName => '$firstName $lastName';
+  String get fullName => '$firstName $lastName';
 
   Map<String, dynamic> toMap() {
     return {
       'uid': uid,
       'firstName': firstName,
       'lastName': lastName,
+      'displayName': displayName,
       'email': email,
-      'role': role,
-      'registeredAt': Timestamp.fromDate(registeredAt),
-      'dob': dob != null ? Timestamp.fromDate(dob!) : null,
+      'createdAt': Timestamp.now(),
     };
   }
 
   factory AppUser.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
-    final registeredTs = data['registeredAt'] as Timestamp;
-    final dobTs = data['dob'] as Timestamp?;
     return AppUser(
-      uid: data['uid'],
+      uid: data['uid'] ?? doc.id,
       firstName: data['firstName'] ?? '',
       lastName: data['lastName'] ?? '',
+      displayName: data['displayName'] ?? '',
       email: data['email'] ?? '',
-      role: data['role'] ?? '',
-      registeredAt: registeredTs.toDate(),
-      dob: dobTs?.toDate(),
+    );
+  }
+
+  AppUser copyWith({
+    String? firstName,
+    String? lastName,
+    String? displayName,
+  }) {
+    return AppUser(
+      uid: uid,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      displayName: displayName ?? this.displayName,
+      email: email,
     );
   }
 }

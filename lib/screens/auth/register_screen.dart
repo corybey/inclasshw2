@@ -22,7 +22,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
-  final _roleController = TextEditingController(text: 'student');
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -43,16 +42,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
         password: _passwordController.text.trim(),
       );
 
-      final user = AppUser(
-        uid: cred.user!.uid,
-        firstName: _firstNameController.text.trim(),
-        lastName: _lastNameController.text.trim(),
+      final uid = cred.user!.uid;
+      final first = _firstNameController.text.trim();
+      final last = _lastNameController.text.trim();
+      final displayName = '$first $last';
+
+      final appUser = AppUser(
+        uid: uid,
+        firstName: first,
+        lastName: last,
+        displayName: displayName,
         email: _emailController.text.trim(),
-        role: _roleController.text.trim(),
-        registeredAt: DateTime.now(),
       );
 
-      await _userService.createUser(user);
+      await _userService.createUser(appUser);
 
       if (!mounted) return;
       Navigator.pushReplacementNamed(context, BoardsHomeScreen.routeName);
@@ -75,7 +78,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void dispose() {
     _firstNameController.dispose();
     _lastNameController.dispose();
-    _roleController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -102,7 +104,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   children: [
                     TextFormField(
                       controller: _firstNameController,
-                      decoration: const InputDecoration(labelText: 'First Name'),
+                      decoration:
+                          const InputDecoration(labelText: 'First Name'),
                       validator: (val) => val == null || val.isEmpty
                           ? 'Enter your first name'
                           : null,
@@ -110,20 +113,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     const SizedBox(height: 8),
                     TextFormField(
                       controller: _lastNameController,
-                      decoration: const InputDecoration(labelText: 'Last Name'),
+                      decoration:
+                          const InputDecoration(labelText: 'Last Name'),
                       validator: (val) => val == null || val.isEmpty
                           ? 'Enter your last name'
                           : null,
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
-                      controller: _roleController,
-                      decoration: const InputDecoration(labelText: 'Role'),
-                    ),
-                    const SizedBox(height: 8),
-                    TextFormField(
                       controller: _emailController,
-                      decoration: const InputDecoration(labelText: 'Email'),
+                      decoration:
+                          const InputDecoration(labelText: 'Email'),
                       keyboardType: TextInputType.emailAddress,
                       validator: (val) => val == null || val.isEmpty
                           ? 'Enter your email'
@@ -132,7 +132,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     const SizedBox(height: 8),
                     TextFormField(
                       controller: _passwordController,
-                      decoration: const InputDecoration(labelText: 'Password'),
+                      decoration:
+                          const InputDecoration(labelText: 'Password'),
                       obscureText: true,
                       validator: (val) => val == null || val.length < 6
                           ? 'Password must be at least 6 characters'

@@ -29,7 +29,7 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.message),
             title: const Text('Message Boards'),
             onTap: () {
-              Navigator.pushReplacementNamed(
+              Navigator.pushNamed(
                   context, BoardsHomeScreen.routeName);
             },
           ),
@@ -37,7 +37,8 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.person),
             title: const Text('Profile'),
             onTap: () {
-              Navigator.pushReplacementNamed(
+              Navigator.pop(context);
+              Navigator.pushNamed(
                   context, ProfileScreen.routeName);
             },
           ),
@@ -45,7 +46,7 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.settings),
             title: const Text('Settings'),
             onTap: () {
-              Navigator.pushReplacementNamed(
+              Navigator.pushNamed(
                   context, SettingsScreen.routeName);
             },
           ),

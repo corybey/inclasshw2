@@ -15,7 +15,7 @@ class UserService {
     return AppUser.fromFirestore(doc);
   }
 
-  Future<void> updateUser(String uid, Map<String, dynamic> data) {
-    return _usersRef.doc(uid).update(data);
+  Future<void> updateDisplayName(String uid, String displayName) {
+    return _usersRef.doc(uid).update({'displayName': displayName});
   }
 }

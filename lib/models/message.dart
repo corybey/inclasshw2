@@ -17,22 +17,12 @@ class Message {
     required this.createdAt,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'boardId': boardId,
-      'text': text,
-      'userId': userId,
-      'userDisplayName': userDisplayName,
-      'createdAt': Timestamp.fromDate(createdAt),
-    };
-  }
-
   factory Message.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
     final ts = data['createdAt'] as Timestamp?;
     return Message(
       id: doc.id,
-      boardId: data['boardId'],
+      boardId: data['boardId'] ?? '',
       text: data['text'] ?? '',
       userId: data['userId'] ?? '',
       userDisplayName: data['userDisplayName'] ?? '',
