@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-
+//create user UI for login, register, and signing out
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 

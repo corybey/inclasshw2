@@ -1,3 +1,5 @@
+//message board model
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Message {

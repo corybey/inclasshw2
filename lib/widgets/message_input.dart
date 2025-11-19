@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+// Bottom input bar with a text field and send button
 class MessageInput extends StatefulWidget {
   final Future<void> Function(String text) onSend;
 
@@ -12,7 +12,7 @@ class MessageInput extends StatefulWidget {
 class _MessageInputState extends State<MessageInput> {
   final TextEditingController _controller = TextEditingController();
   bool _isSending = false;
-
+// Call the parent callback with the current text and clear the field
   Future<void> _handleSend() async {
     final text = _controller.text.trim();
     if (text.isEmpty || _isSending) return;
@@ -38,7 +38,7 @@ class _MessageInputState extends State<MessageInput> {
     _controller.dispose();
     super.dispose();
   }
-
+//text input and send button
   @override
   Widget build(BuildContext context) {
     return SafeArea(

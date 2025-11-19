@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/message.dart';
-
+// Visual bubble for a single chat message
 class MessageBubble extends StatelessWidget {
   final Message message;
   final bool isMe;
@@ -13,6 +13,7 @@ class MessageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Align bubble left or right depending on who sent it
     final bgColor = isMe ? Colors.blue[100] : Colors.grey[200];
     final align =
         isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start;
@@ -22,7 +23,7 @@ class MessageBubble extends StatelessWidget {
       bottomLeft: isMe ? const Radius.circular(12) : Radius.zero,
       bottomRight: isMe ? Radius.zero : const Radius.circular(12),
     );
-
+//sender name and message
     return Align(
       alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(

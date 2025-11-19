@@ -5,7 +5,7 @@ import '../../models/app_user.dart';
 import '../../services/auth_service.dart';
 import '../../services/user_service.dart';
 import '../home/boards_home_screen.dart';
-
+//create account and user profile
 class RegisterScreen extends StatefulWidget {
   static const String routeName = '/register';
 
@@ -19,7 +19,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
   final _authService = AuthService();
   final _userService = UserService();
-
+//profile controllers
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -35,7 +35,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _isLoading = true;
       _error = null;
     });
-
+//create account
     try {
       final cred = await _authService.register(
         email: _emailController.text.trim(),
@@ -46,7 +46,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       final first = _firstNameController.text.trim();
       final last = _lastNameController.text.trim();
       final displayName = '$first $last';
-
+//create user profile
       final appUser = AppUser(
         uid: uid,
         firstName: first,
@@ -82,7 +82,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _passwordController.dispose();
     super.dispose();
   }
-
+//registration information
   @override
   Widget build(BuildContext context) {
     return Scaffold(

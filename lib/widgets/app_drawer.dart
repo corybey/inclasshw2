@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../screens/home/boards_home_screen.dart';
 import '../screens/profile/profile_screen.dart';
 import '../screens/settings/settings_screen.dart';
-
+// Drawer widget that provides navigation to main sections of the app
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
 
@@ -25,6 +25,7 @@ class AppDrawer extends StatelessWidget {
               ),
             ),
           ),
+          //go to message board
           ListTile(
             leading: const Icon(Icons.message),
             title: const Text('Message Boards'),
@@ -33,6 +34,7 @@ class AppDrawer extends StatelessWidget {
                   context, BoardsHomeScreen.routeName);
             },
           ),
+          //go to profile
           ListTile(
             leading: const Icon(Icons.person),
             title: const Text('Profile'),
@@ -42,6 +44,7 @@ class AppDrawer extends StatelessWidget {
                   context, ProfileScreen.routeName);
             },
           ),
+          //go to settings
           ListTile(
             leading: const Icon(Icons.settings),
             title: const Text('Settings'),

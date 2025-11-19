@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../auth/login_screen.dart';
 import '../home/boards_home_screen.dart';
-
+//splash screen to decide where to send user
+//login if not auth
+//message board if logged in
 class SplashScreen extends StatefulWidget {
   static const String routeName = '/splash';
 

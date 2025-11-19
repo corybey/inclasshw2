@@ -8,7 +8,7 @@ import '../../services/message_service.dart';
 import '../../services/user_service.dart';
 import '../../widgets/message_bubble.dart';
 import '../../widgets/message_input.dart';
-
+//chat shown depending on the specific board accessed
 class ChatScreen extends StatefulWidget {
   static const String routeName = '/chat';
 
@@ -31,7 +31,7 @@ class _ChatScreenState extends State<ChatScreen> {
     super.initState();
     _loadCurrentUserProfile();
   }
-
+//load current user profile
   Future<void> _loadCurrentUserProfile() async {
     final firebaseUser = FirebaseAuth.instance.currentUser;
     if (firebaseUser == null) return;
@@ -42,7 +42,7 @@ class _ChatScreenState extends State<ChatScreen> {
       _currentAppUser = appUser;
     });
   }
-
+// send messages
   Future<void> _sendMessage(String text) async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) return;
@@ -63,7 +63,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     final currentUser = FirebaseAuth.instance.currentUser;
-
+//message list
     return Scaffold(
       appBar: AppBar(title: Text(widget.board.name)),
       body: Column(
@@ -99,6 +99,7 @@ class _ChatScreenState extends State<ChatScreen> {
               },
             ),
           ),
+          //new message input
           MessageInput(onSend: _sendMessage),
         ],
       ),

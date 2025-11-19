@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../models/board.dart';
 import '../../widgets/app_drawer.dart';
 import '../chat/chat_screen.dart';
-
+//shows chat boards
 class BoardsHomeScreen extends StatelessWidget {
   static const String routeName = '/boards';
 
@@ -13,6 +13,7 @@ class BoardsHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Message Boards')),
+      // Drawer with navigation to profile/settings
       drawer: const AppDrawer(),
       body: ListView.builder(
         itemCount: kBoards.length,

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../models/app_user.dart';
 import '../../services/user_service.dart';
-
+// Drawer with navigation to profile/settings
 class ProfileScreen extends StatefulWidget {
   static const String routeName = '/profile';
 
@@ -26,7 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
     _loadProfile();
   }
-
+// Load the current AppUser from Firestore
   Future<void> _loadProfile() async {
     final firebaseUser = FirebaseAuth.instance.currentUser;
     if (firebaseUser == null) {
@@ -42,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       _isLoading = false;
     });
   }
-
+// Save the updated display name to Firestore
   Future<void> _saveDisplayName() async {
     final firebaseUser = FirebaseAuth.instance.currentUser;
     if (firebaseUser == null) return;

@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../services/auth_service.dart';
 import '../home/boards_home_screen.dart';
 import 'register_screen.dart';
-
+//user logs in with email+ password
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/login';
 
@@ -15,6 +15,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  //validate the form, help with auth, and controller setup
   final _formKey = GlobalKey<FormState>();
   final _authService = AuthService();
 
@@ -23,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool _isLoading = false;
   String? _error;
-
+//login and send to message board
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
 
@@ -53,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     }
   }
-
+//clean controllers when widget is done
   @override
   void dispose() {
     _emailController.dispose();
@@ -64,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void _goToRegister() {
     Navigator.pushNamed(context, RegisterScreen.routeName);
   }
-
+//inputs 
   @override
   Widget build(BuildContext context) {
     return Scaffold(

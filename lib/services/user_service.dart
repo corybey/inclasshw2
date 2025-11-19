@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/app_user.dart';
-
+//handle all read/writes to the user collection
 class UserService {
   final CollectionReference _usersRef =
       FirebaseFirestore.instance.collection('users');

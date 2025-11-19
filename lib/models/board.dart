@@ -1,3 +1,5 @@
+//home page boards
+
 class Board {
   final String id;
   final String name;
@@ -12,7 +14,7 @@ class Board {
   });
 }
 
-// Hard-coded boards for the assignment
+// Hard-coded boards
 const List<Board> kBoards = [
   Board(
     id: 'general',

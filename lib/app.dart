@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         ProfileScreen.routeName: (_) => const ProfileScreen(),
         SettingsScreen.routeName: (_) => SettingsScreen(),
       },
-      // Chat needs a Board argument
+      // board argument for chat
       onGenerateRoute: (settings) {
         if (settings.name == ChatScreen.routeName) {
           final board = settings.arguments as Board;

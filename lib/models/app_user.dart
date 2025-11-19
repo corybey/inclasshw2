@@ -1,3 +1,5 @@
+//user model
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AppUser {
@@ -27,7 +29,7 @@ class AppUser {
       'createdAt': Timestamp.now(),
     };
   }
-
+//mapping
   factory AppUser.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
     return AppUser(
